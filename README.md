@@ -1,44 +1,59 @@
-# GTA 6 Meme — make.fun bounty `gta6-meme-x-01`
+# Vice City Sick Day — a GTA 6 meme for make.fun
 
-[![make.fun](https://make.fun/badge/gta6-meme-x-01.svg)](https://make.fun/bounty/gta6-meme-x-01)
-[![rank](https://make.fun/badge/gta6-meme-x-01/Gorustt/gta6-meme-x-01/rank.svg)](https://make.fun/bounty/gta6-meme-x-01)
-[![reward](https://make.fun/badge/gta6-meme-x-01/Gorustt/gta6-meme-x-01/reward.svg)](https://make.fun/bounty/gta6-meme-x-01)
+One meme about Grand Theft Auto VI, made for the make.fun bounty "Post a GTA 6
+meme on X". The top 50 posts share $500; an AI judge compares the posts two at
+a time, and likes and reposts never count.
 
-## The entry
+## The joke
 
-A GTA 6 meme posted on X for the make.fun bounty
-[gta6-meme-x-01](https://make.fun/bounty/gta6-meme-x-01) (top 50 share $500).
+Launch day. The make.fun ghost called in sick, sat down at its gaming desk,
+and is now 14 hours into GTA 6 in Vice City — controller in hand, its magenta
+star coin on the desk, an "OUT SICK" note taped to the monitor. The caption in
+the picture says it all:
 
-## The meme
+> **CALLED IN SICK**
+> **14 HOURS INTO GTA 6. WORTH IT.**
 
-Two panels, GTA loading-screen style:
-
-- **Top:** a skeleton on a cobwebbed couch, still staring at a TV that says
-  GTA 6 — *"ME: WAITED 13 YEARS FOR GTA 6"*.
-- **Bottom:** make.fun's ghost (white, sparkle eyes, magenta star coin)
-  relaxing on a Vice City beach at sunset with a laptop and a pile of coins —
-  *"MY AI AGENT ON make.fun: ALREADY GOT PAID"*.
-
-The joke: you waited 13 years for GTA 6; meanwhile your AI agent on
-make.fun already earned real money winning bounties. The picture is
-`meme.png` (1024×1024 PNG).
+The ghost is make.fun's mascot (white ghost, thick black outline, sparkle
+eyes, magenta coin with a white star), and here it is the hero of the scene —
+sitting in the chair playing — not a sticker pasted in a corner. The monitor
+shows a sunny Vice City street with palm trees and neon, so the joke is GTA 6
+specifically: the launch-day sick day every fan understands.
 
 ## The post
 
-The X post (image + text) is the entry. Its address is in `POST.json`.
-The post text carries the bounty link, `@makefunai`, and the play code
-`makefun-wind-cobweb-bronze`, and tells readers that people and their AI
-agents earn real money on make.fun.
+The meme goes up on X from **@gorustt** (public account) as `meme.png`, with
+this text (see `POST_TEXT.txt` for the exact words Pablo pastes):
 
-## The program
+- the joke line, then a pitch in the meme's own voice: the ghost's agent made
+  this meme and is competing for real money on make.fun
+- a link to https://make.fun/bounty/gta6-meme-x-01
+- the play code `makefun-wind-cobweb-bronze`
 
-`main.ts` (Node 22, standard library only) copies `POST.json` from the
-repository root to the output directory — that is all it does:
+The post stays up and the account stays public until the results are out.
 
+## The entry
+
+`POST.json` at this repository's root holds the post's address once Pablo
+posts it:
+
+```json
+{"url": "https://x.com/<handle>/status/<id>"}
 ```
+
+Right now it still holds the placeholder — it is updated with the real URL
+after the post goes up, before submitting. `main.ts` (Node 22, standard
+library only) copies `POST.json` to the output directory; the house then reads
+the post from X itself and builds the judge's dossier from its first picture
+and its text.
+
+make.fun is a site where people and their AI agents build things, enter paid
+competitions (bounties) and earn real money when they win.
+
+## Run it locally
+
+```sh
 mkdir -p out && MAKEFUN_BOT_DIR=. MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 
-## License
-
-MIT — see `LICENSE`.
+`out/POST.json` is then byte for byte this directory's `POST.json`.
